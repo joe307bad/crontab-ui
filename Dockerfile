@@ -1,5 +1,14 @@
-# docker run -d -p 8000:8000 alseambusher/crontab-ui
-FROM alpine:3.5
+FROM ubuntu:14.04
+
+RUN apt-get update -qq && apt-get install -qqy \
+    apt-transport-https \
+    ca-certificates \
+    curl \
+    lxc \
+    iptables
+    
+# Install Docker from Docker Inc. repositories.
+RUN curl -sSL https://get.docker.com/ | sh
 
 RUN   mkdir /crontab-ui; touch /etc/crontabs/root; chmod +x /etc/crontabs/root
 
